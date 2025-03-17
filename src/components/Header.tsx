@@ -14,27 +14,27 @@ const Header = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <WizardLogo />
-          <span className="text-xl font-bold text-primary-700">Digital Wizards</span>
+          <span className="text-xl font-bold text-indigo-700">Digital Wizards</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          <Link href="/" className="text-gray-700 hover:text-primary-600 font-medium">
+          <Link href="/" className="text-gray-700 hover:text-indigo-600 font-medium">
             Home
           </Link>
-          <Link href="#services" className="text-gray-700 hover:text-primary-600 font-medium">
+          <Link href="#services" className="text-gray-700 hover:text-indigo-600 font-medium">
             Services
           </Link>
-          <Link href="#work" className="text-gray-700 hover:text-primary-600 font-medium">
+          <Link href="#work" className="text-gray-700 hover:text-indigo-600 font-medium">
             Work
           </Link>
-          <Link href="#about" className="text-gray-700 hover:text-primary-600 font-medium">
+          <Link href="#about" className="text-gray-700 hover:text-indigo-600 font-medium">
             About
           </Link>
-          <Link href="#blog" className="text-gray-700 hover:text-primary-600 font-medium">
+          <Link href="#blog" className="text-gray-700 hover:text-indigo-600 font-medium">
             Blog
           </Link>
-          <Link href="#contact" className="text-gray-700 hover:text-primary-600 font-medium">
+          <Link href="#contact" className="text-gray-700 hover:text-indigo-600 font-medium">
             Contact
           </Link>
         </nav>
@@ -85,42 +85,42 @@ const Header = () => {
           <div className="flex flex-col space-y-4">
             <Link 
               href="/" 
-              className="text-gray-700 hover:text-primary-600 font-medium"
+              className="text-gray-700 hover:text-indigo-600 font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
             <Link 
               href="#services" 
-              className="text-gray-700 hover:text-primary-600 font-medium"
+              className="text-gray-700 hover:text-indigo-600 font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </Link>
             <Link 
               href="#work" 
-              className="text-gray-700 hover:text-primary-600 font-medium"
+              className="text-gray-700 hover:text-indigo-600 font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Work
             </Link>
             <Link 
               href="#about" 
-              className="text-gray-700 hover:text-primary-600 font-medium"
+              className="text-gray-700 hover:text-indigo-600 font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
             </Link>
             <Link 
               href="#blog" 
-              className="text-gray-700 hover:text-primary-600 font-medium"
+              className="text-gray-700 hover:text-indigo-600 font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Blog
             </Link>
             <Link 
               href="#contact" 
-              className="text-gray-700 hover:text-primary-600 font-medium"
+              className="text-gray-700 hover:text-indigo-600 font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
