@@ -51,7 +51,7 @@ const CTASection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-r from-primary-700 to-primary-900 text-white clip-path-slant">
+    <section className="py-16 md:py-24 bg-gradient-to-r from-indigo-700 to-indigo-900 text-white clip-path-slant">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -68,7 +68,7 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <motion.a
                 href="#contact"
-                className="bg-white text-primary-800 hover:bg-gray-100 px-8 py-3 rounded-full font-medium text-center transition-all transform hover:scale-105 shadow-lg"
+                className="bg-white text-indigo-800 hover:bg-gray-100 px-8 py-3 rounded-full font-medium text-center transition-all transform hover:scale-105 shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -102,7 +102,7 @@ const CTASection = () => {
                   <input 
                     type="text" 
                     id="name" 
-                    className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 ${errors.name ? 'border-red-500' : ''}`}
+                    className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-gray-900 ${errors.name ? 'border-red-500' : ''}`}
                     placeholder="Your name" 
                     {...register("name")}
                   />

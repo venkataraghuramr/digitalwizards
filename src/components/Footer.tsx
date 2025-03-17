@@ -176,14 +176,14 @@ const Footer = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="bg-gray-800 text-white w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="bg-gray-800 text-white w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   required
                 />
               </div>
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded w-full transition-colors disabled:opacity-70"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded w-full transition-colors disabled:opacity-70"
               >
                 {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
               </button>
