@@ -5,8 +5,9 @@ import {
   insertInquirySchema, 
   insertLeadSchema, 
   insertSubscriberSchema 
-} from "@shared/schema";
+} from "../shared/schema";
 import { fromZodError } from "zod-validation-error";
+import { ZodError } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact Form Submission
@@ -21,7 +22,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         data: inquiry
       });
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         res.status(400).json({ 
           success: false, 
@@ -30,7 +31,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         res.status(500).json({ 
           success: false, 
-          message: "An unexpected error occurred" 
+          message: error instanceof Error ? error.message : "An unexpected error occurred" 
         });
       }
     }
@@ -48,7 +49,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         data: lead
       });
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         res.status(400).json({ 
           success: false, 
@@ -57,7 +58,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         res.status(500).json({ 
           success: false, 
-          message: "An unexpected error occurred" 
+          message: error instanceof Error ? error.message : "An unexpected error occurred" 
         });
       }
     }
@@ -75,7 +76,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         data: subscriber
       });
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         res.status(400).json({ 
           success: false, 
@@ -84,7 +85,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         res.status(500).json({ 
           success: false, 
-          message: "An unexpected error occurred" 
+          message: error instanceof Error ? error.message : "An unexpected error occurred" 
         });
       }
     }
