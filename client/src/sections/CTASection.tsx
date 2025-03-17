@@ -115,7 +115,7 @@ const CTASection = () => {
                   <input 
                     type="email" 
                     id="email" 
-                    className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 ${errors.email ? 'border-red-500' : ''}`}
+                    className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-gray-900 ${errors.email ? 'border-red-500' : ''}`}
                     placeholder="your.email@example.com" 
                     {...register("email")}
                   />
@@ -127,7 +127,7 @@ const CTASection = () => {
                   <label htmlFor="service" className="block text-gray-700 font-medium mb-1">Service Interested In</label>
                   <select 
                     id="service" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-gray-900"
                     {...register("service")}
                   >
                     <option value="">Select a service</option>
@@ -144,20 +144,20 @@ const CTASection = () => {
                   <textarea 
                     id="message" 
                     rows={3} 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-gray-900"
                     placeholder="Tell us about your project"
                     {...register("message")}
                   ></textarea>
                 </div>
                 <button 
                   type="submit" 
-                  className="w-full bg-primary-700 hover:bg-primary-800 text-white px-6 py-3 rounded-lg font-medium transition-all disabled:opacity-70"
+                  className="w-full bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-3 rounded-lg font-medium transition-all disabled:opacity-70"
                   disabled={leadMutation.isPending}
                 >
                   {leadMutation.isPending ? "Submitting..." : "Submit Request"}
                 </button>
                 <p className="text-gray-500 text-xs text-center">
-                  By submitting this form, you agree to our <a href="#" className="text-primary-700 hover:underline">Privacy Policy</a>.
+                  By submitting this form, you agree to our <a href="#" className="text-indigo-700 hover:underline">Privacy Policy</a>.
                 </p>
               </form>
             </div>

@@ -26,7 +26,7 @@ const AboutSection = () => {
                 className="rounded-lg shadow-xl object-cover w-full h-[500px]" 
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary-100 rounded-xl -z-10"></div>
+            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-indigo-100 rounded-xl -z-10"></div>
             <div className="absolute -top-8 -left-8 w-64 h-64 bg-amber-500 opacity-10 rounded-xl -z-10"></div>
           </motion.div>
           
@@ -37,7 +37,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block px-4 py-1 bg-primary-100 rounded-full text-primary-700 font-medium text-sm mb-4">ABOUT US</div>
+            <div className="inline-block px-4 py-1 bg-indigo-100 rounded-full text-indigo-700 font-medium text-sm mb-4">ABOUT US</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Transforming Businesses Through Creative Digital Strategy</h2>
             <p className="text-gray-700 mb-6 text-lg">
               Founded in 2015, Digital Wizards has been at the forefront of digital innovation, helping businesses transform their online presence through strategic marketing and cutting-edge design solutions.
@@ -52,7 +52,6 @@ const AboutSection = () => {
                   key={index}
                   className="bg-white p-4 rounded-lg shadow-sm"
                   whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
