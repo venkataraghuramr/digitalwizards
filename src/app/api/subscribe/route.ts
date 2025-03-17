@@ -1,31 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ZodError } from 'zod';
-import { insertSubscriberSchema } from '../../../../shared/schema';
 import { storage } from '../../../../server/storage';
+import { z } from 'zod';
+
+const subscribeSchema = z.object({
+  email: z.string().email('Please enter a valid email address'),
+});
 
 export async function POST(request: NextRequest) {
   try {
+    // Parse request body
     const body = await request.json();
-    const validatedData = insertSubscriberSchema.parse(body);
     
-    const subscriber = await storage.createSubscriber(validatedData);
+    // Validate with zod
+    const validatedData = subscribeSchema.parse(body);
     
+    // Store subscription in our database
+    const subscriber = await storage.createSubscriber({
+      email: validatedData.email,
+    });
+    
+    // Return success response
     return NextResponse.json({
       success: true,
-      message: "Subscribed to newsletter successfully",
-      data: subscriber
-    }, { status: 201 });
+      data: subscriber,
+      message: 'Successfully subscribed to the newsletter'
+    });
   } catch (error) {
-    if (error instanceof ZodError) {
-      return NextResponse.json({ 
-        success: false, 
-        message: error.errors.map(e => e.message).join(', ')
-      }, { status: 400 });
-    } else {
-      return NextResponse.json({ 
-        success: false, 
-        message: error instanceof Error ? error.message : "An unexpected error occurred" 
-      }, { status: 500 });
+    console.error('Subscribe error:', error);
+    
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: error.errors[0].message || 'Invalid email provided'
+        }, 
+        { status: 400 }
+      );
     }
+    
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: 'Failed to subscribe to the newsletter'
+      }, 
+      { status: 500 }
+    );
   }
 }

@@ -1,31 +1,55 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ZodError } from 'zod';
-import { insertLeadSchema } from '../../../../shared/schema';
 import { storage } from '../../../../server/storage';
+import { z } from 'zod';
+
+const leadSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Please enter a valid email address'),
+  service: z.string().optional(),
+  message: z.string().optional(),
+});
 
 export async function POST(request: NextRequest) {
   try {
+    // Parse request body
     const body = await request.json();
-    const validatedData = insertLeadSchema.parse(body);
     
-    const lead = await storage.createLead(validatedData);
+    // Validate with zod
+    const validatedData = leadSchema.parse(body);
     
+    // Store lead in our database
+    const lead = await storage.createLead({
+      name: validatedData.name,
+      email: validatedData.email,
+      service: validatedData.service,
+      message: validatedData.message,
+    });
+    
+    // Return success response
     return NextResponse.json({
       success: true,
-      message: "Lead form submitted successfully",
-      data: lead
-    }, { status: 201 });
+      data: lead,
+      message: 'Your information has been submitted successfully'
+    });
   } catch (error) {
-    if (error instanceof ZodError) {
-      return NextResponse.json({ 
-        success: false, 
-        message: error.errors.map(e => e.message).join(', ')
-      }, { status: 400 });
-    } else {
-      return NextResponse.json({ 
-        success: false, 
-        message: error instanceof Error ? error.message : "An unexpected error occurred" 
-      }, { status: 500 });
+    console.error('Lead error:', error);
+    
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: error.errors[0].message || 'Invalid form data provided'
+        }, 
+        { status: 400 }
+      );
     }
+    
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: 'Failed to submit your information. Please try again later.'
+      }, 
+      { status: 500 }
+    );
   }
 }

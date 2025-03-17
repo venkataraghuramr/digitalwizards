@@ -1,31 +1,55 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ZodError } from 'zod';
-import { insertInquirySchema } from '../../../../shared/schema';
 import { storage } from '../../../../server/storage';
+import { z } from 'zod';
+
+const contactSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Please enter a valid email address'),
+  subject: z.string().optional(),
+  message: z.string().min(1, 'Message is required'),
+});
 
 export async function POST(request: NextRequest) {
   try {
+    // Parse request body
     const body = await request.json();
-    const validatedData = insertInquirySchema.parse(body);
     
-    const inquiry = await storage.createInquiry(validatedData);
+    // Validate with zod
+    const validatedData = contactSchema.parse(body);
     
+    // Store inquiry in our database
+    const inquiry = await storage.createInquiry({
+      name: validatedData.name,
+      email: validatedData.email,
+      subject: validatedData.subject,
+      message: validatedData.message,
+    });
+    
+    // Return success response
     return NextResponse.json({
       success: true,
-      message: "Contact form submitted successfully",
-      data: inquiry
-    }, { status: 201 });
+      data: inquiry,
+      message: 'Your message has been sent successfully'
+    });
   } catch (error) {
-    if (error instanceof ZodError) {
-      return NextResponse.json({ 
-        success: false, 
-        message: error.errors.map(e => e.message).join(', ')
-      }, { status: 400 });
-    } else {
-      return NextResponse.json({ 
-        success: false, 
-        message: error instanceof Error ? error.message : "An unexpected error occurred" 
-      }, { status: 500 });
+    console.error('Contact error:', error);
+    
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: error.errors[0].message || 'Invalid form data provided'
+        }, 
+        { status: 400 }
+      );
     }
+    
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: 'Failed to send your message. Please try again later.'
+      }, 
+      { status: 500 }
+    );
   }
 }
