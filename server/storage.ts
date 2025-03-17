@@ -1,128 +1,69 @@
 import { 
-  type User, 
-  type InsertUser, 
-  type Inquiry, 
-  type InsertInquiry, 
-  type Lead, 
-  type InsertLead, 
-  type Subscriber, 
-  type InsertSubscriber
-} from "../shared/schema";
+  ContactSubmission, 
+  InsertContactSubmission, 
+  NewsletterSubscription, 
+  InsertNewsletterSubscription
+} from "@shared/schema";
 
 export interface IStorage {
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
-  
-  // Inquiry methods
-  createInquiry(inquiry: InsertInquiry): Promise<Inquiry>;
-  getInquiries(): Promise<Inquiry[]>;
-  
-  // Lead methods
-  createLead(lead: InsertLead): Promise<Lead>;
-  getLeads(): Promise<Lead[]>;
-  
-  // Subscriber methods
-  createSubscriber(subscriber: InsertSubscriber): Promise<Subscriber>;
-  getSubscribers(): Promise<Subscriber[]>;
+  createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission>;
+  getContactSubmissions(): Promise<ContactSubmission[]>;
+  createNewsletterSubscription(subscription: InsertNewsletterSubscription): Promise<NewsletterSubscription>;
+  getNewsletterSubscriptions(): Promise<NewsletterSubscription[]>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private inquiries: Map<number, Inquiry>;
-  private leads: Map<number, Lead>;
-  private subscribers: Map<number, Subscriber>;
-  private currentUserId: number;
-  private currentInquiryId: number;
-  private currentLeadId: number;
-  private currentSubscriberId: number;
+  private contactSubmissions: Map<number, ContactSubmission>;
+  private newsletterSubscriptions: Map<number, NewsletterSubscription>;
+  private contactSubmissionId: number;
+  private newsletterSubscriptionId: number;
 
   constructor() {
-    this.users = new Map();
-    this.inquiries = new Map();
-    this.leads = new Map();
-    this.subscribers = new Map();
-    this.currentUserId = 1;
-    this.currentInquiryId = 1;
-    this.currentLeadId = 1;
-    this.currentSubscriberId = 1;
+    this.contactSubmissions = new Map();
+    this.newsletterSubscriptions = new Map();
+    this.contactSubmissionId = 1;
+    this.newsletterSubscriptionId = 1;
   }
 
-  // User methods
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentUserId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
-  }
-
-  // Inquiry methods
-  async createInquiry(insertInquiry: InsertInquiry): Promise<Inquiry> {
-    const id = this.currentInquiryId++;
-    const createdAt = new Date();
-    const inquiry: Inquiry = { 
-      ...insertInquiry, 
-      id, 
-      createdAt,
-      subject: insertInquiry.subject || null 
+  async createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission> {
+    const id = this.contactSubmissionId++;
+    const now = new Date();
+    const contactSubmission: ContactSubmission = {
+      ...submission,
+      id,
+      createdAt: now,
     };
-    this.inquiries.set(id, inquiry);
-    return inquiry;
+    this.contactSubmissions.set(id, contactSubmission);
+    return contactSubmission;
   }
 
-  async getInquiries(): Promise<Inquiry[]> {
-    return Array.from(this.inquiries.values());
+  async getContactSubmissions(): Promise<ContactSubmission[]> {
+    return Array.from(this.contactSubmissions.values());
   }
 
-  // Lead methods
-  async createLead(insertLead: InsertLead): Promise<Lead> {
-    const id = this.currentLeadId++;
-    const createdAt = new Date();
-    const lead: Lead = { 
-      ...insertLead, 
-      id, 
-      createdAt,
-      service: insertLead.service || null,
-      message: insertLead.message || null 
-    };
-    this.leads.set(id, lead);
-    return lead;
-  }
-
-  async getLeads(): Promise<Lead[]> {
-    return Array.from(this.leads.values());
-  }
-
-  // Subscriber methods
-  async createSubscriber(insertSubscriber: InsertSubscriber): Promise<Subscriber> {
+  async createNewsletterSubscription(subscription: InsertNewsletterSubscription): Promise<NewsletterSubscription> {
     // Check if email already exists
-    const existingSubscriber = Array.from(this.subscribers.values()).find(
-      (subscriber) => subscriber.email === insertSubscriber.email
+    const existingSubscription = Array.from(this.newsletterSubscriptions.values()).find(
+      (sub) => sub.email === subscription.email
     );
     
-    if (existingSubscriber) {
-      return existingSubscriber;
+    if (existingSubscription) {
+      return existingSubscription;
     }
     
-    const id = this.currentSubscriberId++;
-    const createdAt = new Date();
-    const subscriber: Subscriber = { ...insertSubscriber, id, createdAt };
-    this.subscribers.set(id, subscriber);
-    return subscriber;
+    const id = this.newsletterSubscriptionId++;
+    const now = new Date();
+    const newsletterSubscription: NewsletterSubscription = {
+      ...subscription,
+      id,
+      createdAt: now,
+    };
+    this.newsletterSubscriptions.set(id, newsletterSubscription);
+    return newsletterSubscription;
   }
 
-  async getSubscribers(): Promise<Subscriber[]> {
-    return Array.from(this.subscribers.values());
+  async getNewsletterSubscriptions(): Promise<NewsletterSubscription[]> {
+    return Array.from(this.newsletterSubscriptions.values());
   }
 }
 
