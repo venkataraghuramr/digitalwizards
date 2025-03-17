@@ -1,154 +1,133 @@
-'use client';
-
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import WizardLogo from "./ui/wizard-logo";
+import { useState } from 'react';
+import Link from 'next/link';
+import WizardLogo from './ui/wizard-logo';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const headerClass = `fixed w-full z-50 bg-white/90 backdrop-blur-sm ${
-    scrolled ? "shadow-md py-2" : "shadow-sm py-4"
-  } transition-all duration-300`;
-
   return (
-    <header className={headerClass}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <WizardLogo />
-            <span className="text-xl font-bold bg-gradient-to-r from-primary-700 to-amber-500 bg-clip-text text-transparent">
-              Digital Wizards
-            </span>
-          </Link>
+    <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-2">
+          <WizardLogo />
+          <span className="text-xl font-bold text-primary-700">Digital Wizards</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="font-medium text-gray-900 hover:text-primary-700 transition-colors">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-8">
+          <Link href="/" className="text-gray-700 hover:text-primary-600 font-medium">
+            Home
+          </Link>
+          <Link href="#services" className="text-gray-700 hover:text-primary-600 font-medium">
+            Services
+          </Link>
+          <Link href="#work" className="text-gray-700 hover:text-primary-600 font-medium">
+            Work
+          </Link>
+          <Link href="#about" className="text-gray-700 hover:text-primary-600 font-medium">
+            About
+          </Link>
+          <Link href="#blog" className="text-gray-700 hover:text-primary-600 font-medium">
+            Blog
+          </Link>
+          <Link href="#contact" className="text-gray-700 hover:text-primary-600 font-medium">
+            Contact
+          </Link>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-gray-700 focus:outline-none"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          {mobileMenuOpen ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <nav className="md:hidden bg-white py-4 px-4 shadow-lg">
+          <div className="flex flex-col space-y-4">
+            <Link 
+              href="/" 
+              className="text-gray-700 hover:text-primary-600 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Home
             </Link>
-            <a href="#about" className="font-medium text-gray-600 hover:text-primary-700 transition-colors">
-              About
-            </a>
-            <a href="#services" className="font-medium text-gray-600 hover:text-primary-700 transition-colors">
-              Services
-            </a>
-            <a href="#work" className="font-medium text-gray-600 hover:text-primary-700 transition-colors">
-              Work
-            </a>
-            <a href="#testimonials" className="font-medium text-gray-600 hover:text-primary-700 transition-colors">
-              Testimonials
-            </a>
-            <a href="#blog" className="font-medium text-gray-600 hover:text-primary-700 transition-colors">
-              Blog
-            </a>
-          </nav>
-
-          <div className="hidden md:block">
-            <a
-              href="#contact"
-              className="bg-primary-700 hover:bg-primary-800 text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105"
+            <Link 
+              href="#services" 
+              className="text-gray-700 hover:text-primary-600 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
             >
-              Contact Us
-            </a>
+              Services
+            </Link>
+            <Link 
+              href="#work" 
+              className="text-gray-700 hover:text-primary-600 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Work
+            </Link>
+            <Link 
+              href="#about" 
+              className="text-gray-700 hover:text-primary-600 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link 
+              href="#blog" 
+              className="text-gray-700 hover:text-primary-600 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link 
+              href="#contact" 
+              className="text-gray-700 hover:text-primary-600 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            id="mobile-menu-button"
-            className="md:hidden text-gray-700 focus:outline-none"
-            onClick={toggleMenu}
-          >
-            <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            className="md:hidden pb-4"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="flex flex-col space-y-3">
-              <Link
-                href="/"
-                className="font-medium text-gray-900 py-2 px-4 rounded-lg hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                Home
-              </Link>
-              <a
-                href="#about"
-                className="font-medium text-gray-600 py-2 px-4 rounded-lg hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                About
-              </a>
-              <a
-                href="#services"
-                className="font-medium text-gray-600 py-2 px-4 rounded-lg hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                Services
-              </a>
-              <a
-                href="#work"
-                className="font-medium text-gray-600 py-2 px-4 rounded-lg hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                Work
-              </a>
-              <a
-                href="#testimonials"
-                className="font-medium text-gray-600 py-2 px-4 rounded-lg hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                Testimonials
-              </a>
-              <a
-                href="#blog"
-                className="font-medium text-gray-600 py-2 px-4 rounded-lg hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                Blog
-              </a>
-              <a
-                href="#contact"
-                className="bg-primary-700 text-white py-2 px-4 rounded-lg font-medium text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact Us
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </div>
+        </nav>
+      )}
     </header>
   );
 };

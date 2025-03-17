@@ -3,56 +3,19 @@ interface WizardLogoProps {
 }
 
 const WizardLogo = ({ white = false }: WizardLogoProps) => {
-  const fillPrimary = white ? "#FFFFFF" : "#4F46E5";
-  const fillSecondary = white ? "#F0F0F0" : "#F59E0B";
+  const fillColor = white ? "#FFFFFF" : "#4F46E5";
   
   return (
-    <div className="w-10 h-10 relative">
-      <svg 
-        width="40" 
-        height="40" 
-        viewBox="0 0 40 40" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Background Circle */}
-        <circle cx="20" cy="20" r="20" fill={fillPrimary} />
-        
-        {/* Wizard Hat */}
-        <path 
-          d="M20 5.5L8 18H32L20 5.5Z" 
-          fill={fillSecondary} 
-        />
-        
-        {/* Hat Brim */}
-        <path 
-          d="M7 19.5C7 19.5 15 22 20 22C25 22 33 19.5 33 19.5V23C33 23 25 25.5 20 25.5C15 25.5 7 23 7 23V19.5Z" 
-          fill={white ? "#DDDDDD" : "#FBBF24"} 
-        />
-        
-        {/* Magic Wand */}
-        <path 
-          d="M16 24L24 33" 
-          stroke={white ? "#FFFFFF" : "#4F46E5"} 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-        />
-        
-        {/* Wand Star */}
-        <path 
-          d="M24 33L26 35M24 33L22 35M24 33L26 31M24 33L22 31" 
-          stroke={fillSecondary} 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-        />
-        
-        {/* Stars */}
-        <circle cx="11" cy="14" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
-        <circle cx="29" cy="14" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
-        <circle cx="14" cy="10" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
-        <circle cx="26" cy="10" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
-      </svg>
-    </div>
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path 
+        d="M20 3.33331C10.8 3.33331 3.33334 10.8 3.33334 20C3.33334 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM24.1667 28.3333L20 24.1666L15.8333 28.3333L11.6667 24.1666L15.8333 20L11.6667 15.8333L15.8333 11.6666L20 15.8333L24.1667 11.6666L28.3333 15.8333L24.1667 20L28.3333 24.1666L24.1667 28.3333Z" 
+        fill={fillColor}
+      />
+      <path 
+        d="M20 6.66669C12.65 6.66669 6.66667 12.65 6.66667 20C6.66667 27.35 12.65 33.3334 20 33.3334C27.35 33.3334 33.3333 27.35 33.3333 20C33.3333 12.65 27.35 6.66669 20 6.66669ZM20 30C14.4833 30 10 25.5167 10 20C10 14.4834 14.4833 10 20 10C25.5167 10 30 14.4834 30 20C30 25.5167 25.5167 30 20 30Z" 
+        fill={fillColor}
+      />
+    </svg>
   );
 };
 
