@@ -3,8 +3,11 @@ interface WizardLogoProps {
 }
 
 const WizardLogo = ({ white = false }: WizardLogoProps) => {
-  const fillPrimary = white ? "#FFFFFF" : "#4F46E5";
-  const fillSecondary = white ? "#F0F0F0" : "#F59E0B";
+  // Using indigo colors for the main palette
+  const fillPrimary = white ? "#FFFFFF" : "#4338CA"; // indigo-700
+  const fillSecondary = white ? "#F0F0F0" : "#818CF8"; // indigo-400
+  const accentColor = white ? "#DDDDDD" : "#C7D2FE"; // indigo-200
+  const starColor = white ? "#FFFFFF" : "#E0E7FF"; // indigo-100
   
   return (
     <div className="w-10 h-10 relative">
@@ -27,13 +30,13 @@ const WizardLogo = ({ white = false }: WizardLogoProps) => {
         {/* Hat Brim */}
         <path 
           d="M7 19.5C7 19.5 15 22 20 22C25 22 33 19.5 33 19.5V23C33 23 25 25.5 20 25.5C15 25.5 7 23 7 23V19.5Z" 
-          fill={white ? "#DDDDDD" : "#FBBF24"} 
+          fill={accentColor} 
         />
         
         {/* Magic Wand */}
         <path 
           d="M16 24L24 33" 
-          stroke={white ? "#FFFFFF" : "#4F46E5"} 
+          stroke={white ? "#FFFFFF" : "#6366F1"} // indigo-500
           strokeWidth="2" 
           strokeLinecap="round" 
         />
@@ -41,16 +44,21 @@ const WizardLogo = ({ white = false }: WizardLogoProps) => {
         {/* Wand Star */}
         <path 
           d="M24 33L26 35M24 33L22 35M24 33L26 31M24 33L22 31" 
-          stroke={fillSecondary} 
+          stroke={white ? "#FFFFFF" : "#818CF8"} // indigo-400
           strokeWidth="2" 
           strokeLinecap="round" 
         />
         
         {/* Stars */}
-        <circle cx="11" cy="14" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
-        <circle cx="29" cy="14" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
-        <circle cx="14" cy="10" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
-        <circle cx="26" cy="10" r="1" fill={white ? "#FFFFFF" : "#FBBF24"} />
+        <circle cx="11" cy="14" r="1" fill={starColor} />
+        <circle cx="29" cy="14" r="1" fill={starColor} />
+        <circle cx="14" cy="10" r="1" fill={starColor} />
+        <circle cx="26" cy="10" r="1" fill={starColor} />
+        
+        {/* Extra sparkles */}
+        <circle cx="20" cy="12" r="0.5" fill={white ? "#FFFFFF" : "#EEF2FF"} /> 
+        <circle cx="18" cy="15" r="0.5" fill={white ? "#FFFFFF" : "#EEF2FF"} />
+        <circle cx="22" cy="15" r="0.5" fill={white ? "#FFFFFF" : "#EEF2FF"} />
       </svg>
     </div>
   );

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="relative pt-24 lg:pt-32 overflow-hidden bg-gradient-to-br from-gray-50 to-primary-50">
+    <section className="relative pt-24 lg:pt-32 overflow-hidden bg-gradient-to-br from-gray-50 to-indigo-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -20,7 +20,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <motion.a
                 href="#services"
-                className="bg-primary-700 hover:bg-primary-800 text-white px-8 py-3 rounded-full font-medium text-center transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="bg-indigo-700 hover:bg-indigo-800 text-white px-8 py-3 rounded-full font-medium text-center transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -54,7 +54,7 @@ const HeroSection = () => {
                 />
               </div>
               <div>
-                <p className="font-medium">Trusted by <span className="text-primary-700">500+</span> clients</p>
+                <p className="font-medium">Trusted by <span className="text-indigo-700">500+</span> clients</p>
               </div>
             </div>
           </motion.div>
@@ -69,7 +69,7 @@ const HeroSection = () => {
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-amber-500 rounded-2xl blur opacity-75 animate-pulse"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-600 to-amber-500 rounded-2xl blur opacity-75 animate-pulse"></div>
               <img 
                 src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" 
                 alt="Digital marketing creative workspace" 
@@ -99,7 +99,7 @@ const HeroSection = () => {
       </div>
       
       {/* Decorative elements */}
-      <div className="hidden md:block absolute top-1/4 right-0 w-64 h-64 bg-primary-100 rounded-full filter blur-3xl opacity-70"></div>
+      <div className="hidden md:block absolute top-1/4 right-0 w-64 h-64 bg-indigo-100 rounded-full filter blur-3xl opacity-70"></div>
       <div className="hidden md:block absolute bottom-1/4 left-0 w-96 h-96 bg-amber-500 rounded-full filter blur-3xl opacity-10"></div>
     </section>
   );
