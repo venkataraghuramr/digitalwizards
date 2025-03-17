@@ -4,8 +4,8 @@ interface WizardLogoProps {
 }
 
 const WizardLogo = ({ white = false }: WizardLogoProps) => {
-  const fillPrimary = white ? "#FFFFFF" : "#8B5CF6"; // Purple
-  const fillSecondary = white ? "#F0F0F0" : "#F59E0B"; // Orange
+  const fillPrimary = white ? "#FFFFFF" : "#8B5CF6";
+  const fillSecondary = white ? "#F0F0F0" : "#F59E0B";
 
   return (
     <div className="w-10 h-10 relative">
@@ -16,20 +16,24 @@ const WizardLogo = ({ white = false }: WizardLogoProps) => {
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Main D shape */}
+        {/* Wizard Hat Base */}
         <path 
-          d="M50 50 L50 350 L250 350 C305.228 350 350 305.228 350 250 V150 C350 94.772 305.228 50 250 50 L50 50 Z" 
+          d="M200 50 L50 300 L350 300 Z" 
           fill={fillPrimary}
         />
         
-        {/* W shape */}
+        {/* Magic Band */}
         <path 
-          d="M100 150 L150 250 L200 150 L250 250 L300 150" 
+          d="M85 250 L315 250" 
           stroke={fillSecondary}
-          strokeWidth="40"
+          strokeWidth="30"
           strokeLinecap="round"
-          strokeLinejoin="round"
         />
+        
+        {/* Stars */}
+        <circle cx="150" cy="180" r="15" fill={fillSecondary} />
+        <circle cx="250" cy="180" r="15" fill={fillSecondary} />
+        <circle cx="200" cy="150" r="15" fill={fillSecondary} />
       </svg>
     </div>
   );
