@@ -61,16 +61,16 @@ const Footer = () => {
               We craft digital experiences that captivate, engage, and convert. Our team of experts is dedicated to helping your business grow.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-white/10 hover:bg-primary-700 p-2 rounded-full transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-indigo-700 p-2 rounded-full transition-colors">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="bg-white/10 hover:bg-primary-700 p-2 rounded-full transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-indigo-700 p-2 rounded-full transition-colors">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="bg-white/10 hover:bg-primary-700 p-2 rounded-full transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-indigo-700 p-2 rounded-full transition-colors">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="bg-white/10 hover:bg-primary-700 p-2 rounded-full transition-colors">
+              <a href="#" className="bg-white/10 hover:bg-indigo-700 p-2 rounded-full transition-colors">
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -111,7 +111,7 @@ const Footer = () => {
                 <input 
                   type="email" 
                   placeholder="Your email address" 
-                  className={`w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white ${errors.email ? 'border-red-500' : ''}`}
+                  className={`w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-white ${errors.email ? 'border-red-500' : ''}`}
                   {...register("email")}
                 />
                 {errors.email && (
@@ -120,7 +120,7 @@ const Footer = () => {
               </div>
               <button 
                 type="submit" 
-                className="w-full bg-primary-700 hover:bg-primary-800 text-white px-4 py-2 rounded-lg font-medium transition-all disabled:opacity-70"
+                className="w-full bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-2 rounded-lg font-medium transition-all disabled:opacity-70"
                 disabled={subscribeMutation.isPending}
               >
                 {subscribeMutation.isPending ? "Subscribing..." : "Subscribe"}

@@ -57,7 +57,7 @@ const AboutSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="text-3xl font-bold text-primary-700 mb-2">{stat.value}</div>
+                  <div className="text-3xl font-bold text-indigo-700 mb-2">{stat.value}</div>
                   <p className="text-gray-600">{stat.label}</p>
                 </motion.div>
               ))}
@@ -65,7 +65,7 @@ const AboutSection = () => {
             
             <motion.a 
               href="#team" 
-              className="text-primary-700 hover:text-primary-800 inline-flex items-center font-medium"
+              className="text-indigo-700 hover:text-indigo-800 inline-flex items-center font-medium"
               whileHover={{ x: 5 }}
               transition={{ duration: 0.2 }}
             >
