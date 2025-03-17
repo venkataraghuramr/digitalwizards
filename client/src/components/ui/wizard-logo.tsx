@@ -16,24 +16,20 @@ const WizardLogo = ({ white = false }: WizardLogoProps) => {
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Wizard Hat Base */}
+        {/* Abstract D */}
         <path 
-          d="M200 50 L50 300 L350 300 Z" 
+          d="M100 50 L100 350 A150 150 0 0 0 250 200 L250 200 A150 150 0 0 0 100 50"
           fill={fillPrimary}
         />
         
-        {/* Magic Band */}
+        {/* Abstract W */}
         <path 
-          d="M85 250 L315 250" 
+          d="M180 100 L220 300 L260 100 L300 300"
           stroke={fillSecondary}
-          strokeWidth="30"
+          strokeWidth="40"
           strokeLinecap="round"
+          strokeLinejoin="round"
         />
-        
-        {/* Stars */}
-        <circle cx="150" cy="180" r="15" fill={fillSecondary} />
-        <circle cx="250" cy="180" r="15" fill={fillSecondary} />
-        <circle cx="200" cy="150" r="15" fill={fillSecondary} />
       </svg>
     </div>
   );
