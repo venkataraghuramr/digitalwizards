@@ -16,29 +16,26 @@ const WizardLogo = ({ white = false }: WizardLogoProps) => {
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Base Circle */}
-        <circle 
-          cx="200" 
-          cy="200" 
-          r="150" 
+        {/* Tech Hexagon */}
+        <path
+          d="M200 50 L350 150 L350 250 L200 350 L50 250 L50 150 Z"
           fill={fillPrimary}
+          strokeWidth="20"
         />
         
-        {/* Magic Wand */}
-        <path 
-          d="M150 150 L250 250 M240 240 L280 280" 
+        {/* Digital Lines */}
+        <path
+          d="M125 175 L275 175 M125 225 L275 225"
           stroke={fillSecondary}
-          strokeWidth="30"
+          strokeWidth="25"
           strokeLinecap="round"
         />
         
-        {/* Sparkle */}
-        <circle 
-          cx="140" 
-          cy="140" 
-          r="15" 
-          fill={fillSecondary}
-        />
+        {/* Connection Points */}
+        <circle cx="125" cy="175" r="12" fill={fillSecondary} />
+        <circle cx="275" cy="175" r="12" fill={fillSecondary} />
+        <circle cx="125" cy="225" r="12" fill={fillSecondary} />
+        <circle cx="275" cy="225" r="12" fill={fillSecondary} />
       </svg>
     </div>
   );
