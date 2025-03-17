@@ -1,3 +1,4 @@
+
 interface WizardLogoProps {
   white?: boolean;
 }
@@ -17,15 +18,15 @@ const WizardLogo = ({ white = false }: WizardLogoProps) => {
       >
         {/* Main D shape */}
         <path 
-          d="M50 0H300C355.228 0 400 44.7715 400 100V300C400 355.228 355.228 400 300 400H50V0Z" 
+          d="M50 50 L50 350 L250 350 C305.228 350 350 305.228 350 250 V150 C350 94.772 305.228 50 250 50 L50 50 Z" 
           fill={fillPrimary}
         />
-
-        {/* Inner Arrow */}
+        
+        {/* W shape */}
         <path 
-          d="M150 100L250 200L150 300" 
+          d="M100 150 L150 250 L200 150 L250 250 L300 150" 
           stroke={fillSecondary}
-          strokeWidth="50"
+          strokeWidth="40"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
