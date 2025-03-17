@@ -3,62 +3,32 @@ interface WizardLogoProps {
 }
 
 const WizardLogo = ({ white = false }: WizardLogoProps) => {
-  // Using indigo colors for the main palette
-  const fillPrimary = white ? "#FFFFFF" : "#4338CA"; // indigo-700
-  const fillSecondary = white ? "#F0F0F0" : "#818CF8"; // indigo-400
-  const accentColor = white ? "#DDDDDD" : "#C7D2FE"; // indigo-200
-  const starColor = white ? "#FFFFFF" : "#E0E7FF"; // indigo-100
-  
+  const fillPrimary = white ? "#FFFFFF" : "#8B5CF6"; // Purple
+  const fillSecondary = white ? "#F0F0F0" : "#F59E0B"; // Orange
+
   return (
     <div className="w-10 h-10 relative">
       <svg 
         width="40" 
         height="40" 
-        viewBox="0 0 40 40" 
+        viewBox="0 0 400 400" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Background Circle */}
-        <circle cx="20" cy="20" r="20" fill={fillPrimary} />
-        
-        {/* Wizard Hat */}
+        {/* Main D shape */}
         <path 
-          d="M20 5.5L8 18H32L20 5.5Z" 
-          fill={fillSecondary} 
+          d="M50 0H300C355.228 0 400 44.7715 400 100V300C400 355.228 355.228 400 300 400H50V0Z" 
+          fill={fillPrimary}
         />
-        
-        {/* Hat Brim */}
+
+        {/* Inner Arrow */}
         <path 
-          d="M7 19.5C7 19.5 15 22 20 22C25 22 33 19.5 33 19.5V23C33 23 25 25.5 20 25.5C15 25.5 7 23 7 23V19.5Z" 
-          fill={accentColor} 
+          d="M150 100L250 200L150 300" 
+          stroke={fillSecondary}
+          strokeWidth="50"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
-        
-        {/* Magic Wand */}
-        <path 
-          d="M16 24L24 33" 
-          stroke={white ? "#FFFFFF" : "#6366F1"} // indigo-500
-          strokeWidth="2" 
-          strokeLinecap="round" 
-        />
-        
-        {/* Wand Star */}
-        <path 
-          d="M24 33L26 35M24 33L22 35M24 33L26 31M24 33L22 31" 
-          stroke={white ? "#FFFFFF" : "#818CF8"} // indigo-400
-          strokeWidth="2" 
-          strokeLinecap="round" 
-        />
-        
-        {/* Stars */}
-        <circle cx="11" cy="14" r="1" fill={starColor} />
-        <circle cx="29" cy="14" r="1" fill={starColor} />
-        <circle cx="14" cy="10" r="1" fill={starColor} />
-        <circle cx="26" cy="10" r="1" fill={starColor} />
-        
-        {/* Extra sparkles */}
-        <circle cx="20" cy="12" r="0.5" fill={white ? "#FFFFFF" : "#EEF2FF"} /> 
-        <circle cx="18" cy="15" r="0.5" fill={white ? "#FFFFFF" : "#EEF2FF"} />
-        <circle cx="22" cy="15" r="0.5" fill={white ? "#FFFFFF" : "#EEF2FF"} />
       </svg>
     </div>
   );
